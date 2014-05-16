@@ -81,17 +81,32 @@
 			stats.domElement.style.left = '0px';
 			stats.domElement.style.top = '0px';
 
-			document.body.appendChild( stats.domElement );
+			document.onkeypress = function (e) {
+			    e = e || window.event;
+			    // use e.keyCode
+			    if(e.keyCode == 115){
+
+			    	if(document.getElementById("stats")){
+
+			    		document.getElementById("stats").remove();
+
+			    	}else{
+
+			    		document.body.appendChild( stats.domElement );
+			    		stats.setMode( 0 );
+
+			    	}
+			    }
+			};
+
 
 			setInterval( function () {
 
 			    stats.begin();
-
-			    // your code goes here
-
 			    stats.end();
 
 			}, 1000 / 60 );
 		</script>
+
 	</body>
 </html>
