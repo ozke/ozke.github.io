@@ -72,6 +72,7 @@
 			  this.scaleY = 1;
 			  this.scaleZ = 1;
 			  this.delay = 1;
+			  this.opacity = .5;
 			  this.reset = function(){ resetPosition(); };
 			  this.geometry = 'cube';
 			};
@@ -83,6 +84,7 @@
 				params = new RoseDCRParams();
 				gui = new dat.GUI();
 				gui.addColor(params, 'materialColor');
+				gui.add(params, 'opacity', 0, 1);
 				gui.add(params, 'speedX', -2, 2);
 				gui.add(params, 'speedY', -2, 2);
 				gui.add(params, 'speedZ', -2, 2);
@@ -161,6 +163,7 @@
 					cube.scale = cube.scale.lerp(endScale, .05);
 
 					cube.material.color.setHex( nuColor );
+					cube.material.opacity = params.opacity;
 				}
 
 				renderer.render(scene, camera);
